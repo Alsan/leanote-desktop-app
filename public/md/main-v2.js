@@ -7989,6 +7989,7 @@ else
         }
 
         function _DoHeaders(text) {
+			(function processSetextStyleHeaders() {
 
             // Setext-style headers:
             //  Header 1
@@ -7997,13 +7998,11 @@ else
             //  Header 2
             //  --------
             //
-            text = text.replace(/^(.+)[ \t]*\n=+[ \t]*\n+/gm,
-                function (wholeMatch, m1) { return "<h1>" + _RunSpanGamut(m1) + "</h1>\n\n"; }
-            );
+				text = text.replace(/^(.+)[ \t]*\n=+[ \t]*\n+/gm, function (wholeMatch, m1) { return '# ' + m1; });
+				text = text.replace(/^(.+)[ \t]*\n-+[ \t]*\n+/gm, function (matchFound, m1) { return '## ' + m1; });
+			})();
 
-            text = text.replace(/^(.+)[ \t]*\n-+[ \t]*\n+/gm,
-                function (matchFound, m1) { return "<h2>" + _RunSpanGamut(m1) + "</h2>\n\n"; }
-            );
+			return (function processATXStyleHeaders()  {
 
             // atx-style headers:
             //  # Header 1
@@ -8024,14 +8023,35 @@ else
             /gm, function() {...});
             */
 
-            text = text.replace(/^(\#{1,6})[ \t]*(.+?)[ \t]*\#*\n+/gm,
-                function (wholeMatch, m1, m2) {
-                    var h_level = m1.length;
-                    return "<h" + h_level + ">" + _RunSpanGamut(m2) + "</h" + h_level + ">\n\n";
-                }
-            );
+				var prevData = { level:1, code:[] };
 
-            return text;
+				function processLevel(level) {
+					// maintain the code digit
+					prevData.code[level-1] = prevData.code[level-1]+1 || (1===level ? 1 : 1);
+
+					// maintain the code length
+					if((level - prevData.level) < 0) prevData.code = prevData.code.slice(0, level);
+
+					// save the level
+					prevData.level = level;
+
+					return prevData.code.join('.');
+                }
+
+				return text.replace(/^(\#{1,6})[ \t]*(.+?)[ \t]*\#*\n+/gm, function (wholeMatch, m1, m2) {
+					var level = m1.length;
+					var levelCode = '';
+
+					// session title not starts with a numeric number
+					if(isNaN(parseInt(m2))) {
+						levelCode = processLevel(level);
+
+						if(1 === level) levelCode = 'Section ' + levelCode + '.';
+					}
+
+					return ['<h', level, '>', levelCode, ' ', _RunSpanGamut(m2), '</h', level, '>\n\n'].join('');
+				});
+			})();
         }
 
         function _DoLists(text, isInsideParagraphlessListItem) {

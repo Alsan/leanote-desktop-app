@@ -26,6 +26,10 @@ pre.prettyprint {
   display: block;
   box-shadow: 0 1px 2px rgba(255, 255, 255, 0.1) inset, 40px 0 0 rgba(102, 128, 153, 0.05) inset, 0 1px 0 rgba(102, 128, 153, 0.05);
 }
+#preview-contents {
+  color: #3f3f3f;
+}
+
 #preview-contents pre ol li {
   padding-left: 10px;
 }
@@ -250,4 +254,29 @@ ol ol {
   color: #a94442;
   background-color: #f2dede;
   border-color: #ebccd1;
+}
+
+h1 {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  text-align: center;
+}
+h1:before, h1:after {
+  background-color: #ddd;
+  content: '\a0';
+  flex-grow: 1;
+  height: 1px;
+  position: relative;
+  top: 0.5em;
+}
+h1:before {
+  margin-right:10px;
+}
+h1:after {
+  margin-left:10px;
+}
+
+.wmd-preview-section {
+    padding-bottom: 2em;
 }

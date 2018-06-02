@@ -12,9 +12,44 @@ body {
   margin: 0;
 }
 
-h1{font-size:30px}h2{font-size:24px}h3{font-size:18px}h4{font-size:14px}
+h1.title {
+  font-size:48px;
+  text-align:center;
+}
+h1:not(.title) {
+  font-size:36px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  text-align: center;
+  page-break-before : always
+}
+h1:not(.title):before, h1:not(.title):after {
+  background-color: #ddd;
+  content: '\a0';
+  flex-grow: 1;
+  height: 1px;
+  position: relative;
+  top: 25px;
+}
+h1:not(.title):before {
+  margin-right:10px;
+}
+h1:not(.title):after {
+  margin-left:10px;
+}
+h2{
+  font-size:24px
+}
+h3{
+  font-size:18px
+}
+h4{
+  font-size:14px
+}
+
 .note-container{
-    width:850px; 
+    width:850px;
     margin:auto;
     padding: 10px 20px;
 }

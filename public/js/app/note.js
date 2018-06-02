@@ -54,7 +54,7 @@ Note.startInterval = function() {
         clearInterval(Note.interval);
     }
     Note.interval = setInterval(function() {
-        console.log("自动保存...");
+        // console.log("自动保存...");
         Note.curChangedSaveIt(false);
     }, Note.intervalTime); // 600s, 10mins
 };
@@ -214,7 +214,7 @@ Note.getSorterAndOrder = function () {
     			break;
     	}
     }
-    console.log({sortBy: sortBy, isAsc: isAsc});
+    // console.log({sortBy: sortBy, isAsc: isAsc});
     return {sortBy: sortBy, isAsc: isAsc};
 };
 
@@ -420,7 +420,7 @@ Note.curHasChanged = function(force) {
         // 已保存了, 不再Dirty
         setEditorIsDirty(false);
     } else {
-        console.log('内容无修改', 'isMarkdown:' + cacheNote.IsMarkdown, 'isDirty:' + editorIsDirty());
+        // console.log('内容无修改', 'isMarkdown:' + cacheNote.IsMarkdown, 'isDirty:' + editorIsDirty());
     }
 
     if (hasChanged.hasChanged) {
@@ -579,7 +579,7 @@ Note.curChangedSaveIt = function(force, callback) {
 
         if (hasChanged.IsNew) {
             if (me.savePoolNew[hasChanged.NoteId]) {
-                console.log('要保存新建两次, 被阻止')
+                // console.log('要保存新建两次, 被阻止')
                 return;
             }
             me.savePoolNew[hasChanged.NoteId] = true;
@@ -618,7 +618,7 @@ Note.curChangedSaveIt = function(force, callback) {
             NoteService.addNoteHistory(me.curNoteId, content, callback);
             // console.log('已保存到历史中')
         } else {
-            console.log('不用保存 (^_^)');
+            // console.log('不用保存 (^_^)');
             callback && callback();
         }
     }
@@ -2296,7 +2296,7 @@ Note.getNoteContentLazy = function(runSeq) {
 
     // 不是一个时候了
     if (runSeq != me._loadContentRunSeq) {
-        console.log('不是一个时候了 ' + runSeq + '_' + me._loadContentRunSeq);
+        // console.log('不是一个时候了 ' + runSeq + '_' + me._loadContentRunSeq);
         return;
     }
 
@@ -2307,12 +2307,12 @@ Note.getNoteContentLazy = function(runSeq) {
 
     var note = me.getNote(noteId);
     if (note && !note.InitSync) {
-        console.log('不用加载');
+        // console.log('不用加载');
         me.getNoteContentLazy(runSeq);
         return;
     }
 
-    console.log('正在加载....' + noteId);
+    // console.log('正在加载....' + noteId);
 
     setTimeout(function() {
         NoteService.getNoteContent(noteId, function(contentO) {
