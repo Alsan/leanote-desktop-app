@@ -1264,28 +1264,28 @@ define("underscore", (function (global) {
 /*
 
     This code is not formatted for readability, but rather run-speed and to assist compilers.
-    
+
     However, the code's intention should be transparent.
-    
+
     *** IE SUPPORT ***
-    
+
     If you require this library to work in IE7, add the following after declaring crel.
-    
+
     var testDiv = document.createElement('div'),
         testLabel = document.createElement('label');
 
-    testDiv.setAttribute('class', 'a');    
+    testDiv.setAttribute('class', 'a');
     testDiv['className'] !== 'a' ? crel.attrMap['class'] = 'className':undefined;
     testDiv.setAttribute('name','a');
     testDiv['name'] !== 'a' ? crel.attrMap['name'] = function(element, value){
         element.id = value;
     }:undefined;
-    
+
 
     testLabel.setAttribute('for', 'a');
     testLabel['htmlFor'] !== 'a' ? crel.attrMap['for'] = 'htmlFor':undefined;
-    
-    
+
+
 
 */
 
@@ -1328,48 +1328,48 @@ define("underscore", (function (global) {
             settings = null;
         }
 
-        // shortcut if there is only one child that is a string    
+        // shortcut if there is only one child that is a string
         if((argumentsLength - childIndex) === 1 && typeof args[childIndex] === 'string' && element.textContent !== undefined){
             element.textContent = args[childIndex];
-        }else{    
+        }else{
             for(; childIndex < argumentsLength; ++childIndex){
                 child = args[childIndex];
-                
+
                 if(child == null){
                     continue;
                 }
-                
+
                 if(!isNode(child)){
                     child = document.createTextNode(child);
                 }
-                
+
                 element.appendChild(child);
             }
         }
-        
+
         for(var key in settings){
             if(!attributeMap[key]){
                 element.setAttribute(key, settings[key]);
             }else{
                 var attr = crel.attrMap[key];
-                if(typeof attr === 'function'){     
-                    attr(element, settings[key]);               
-                }else{            
+                if(typeof attr === 'function'){
+                    attr(element, settings[key]);
+                }else{
                     element.setAttribute(attr, settings[key]);
                 }
             }
         }
-        
+
         return element;
     }
-    
+
     // Used for mapping one kind of attribute to the supported version of that in bad browsers.
     // String referenced so that compilers maintain the property name.
     crel['attrMap'] = {};
-    
+
     // String referenced so that compilers maintain the property name.
     crel["isNode"] = isNode;
-    
+
     return crel;
 }));
 
@@ -1420,7 +1420,7 @@ define('constants',[], function() {
  * about pesky cross-browser inconsistencies and the dubious `lastIndex` property.
  */
 var XRegExp = (function(undefined) {
-    
+
 
 /* ==============================
  * Private variables
@@ -3081,7 +3081,7 @@ var XRegExp = (function(undefined) {
  */
 
 (function(XRegExp) {
-    
+
 
     var REGEX_DATA = 'xregexp',
         subParts = /(\()(?!\?)|\\([1-9]\d*)|\\[\s\S]|\[(?:[^\\\]]|\\[\s\S])*]/g,
@@ -3250,7 +3250,7 @@ var XRegExp = (function(undefined) {
  */
 
 (function(XRegExp) {
-    
+
 
 /**
  * Returns a match detail object composed of the provided values.
@@ -3450,7 +3450,7 @@ var XRegExp = (function(undefined) {
  * @requires XRegExp
  */
 (function(XRegExp) {
-    
+
 
 // Storage for Unicode data
     var unicode = {};
@@ -3688,7 +3688,7 @@ var XRegExp = (function(undefined) {
  * @requires XRegExp, Unicode Base
  */
 (function(XRegExp) {
-    
+
 
     if (!XRegExp.addUnicodeData) {
         throw new ReferenceError('Unicode Base must be loaded before Unicode Blocks');
@@ -4593,7 +4593,7 @@ var XRegExp = (function(undefined) {
  * @requires XRegExp, Unicode Base
  */
 (function(XRegExp) {
-    
+
 
     if (!XRegExp.addUnicodeData) {
         throw new ReferenceError('Unicode Base must be loaded before Unicode Categories');
@@ -4826,7 +4826,7 @@ var XRegExp = (function(undefined) {
  * @requires XRegExp, Unicode Base
  */
 (function(XRegExp) {
-    
+
 
     if (!XRegExp.addUnicodeData) {
         throw new ReferenceError('Unicode Base must be loaded before Unicode Properties');
@@ -4896,7 +4896,7 @@ var XRegExp = (function(undefined) {
  * @requires XRegExp, Unicode Base
  */
 (function(XRegExp) {
-    
+
 
     if (!XRegExp.addUnicodeData) {
         throw new ReferenceError('Unicode Base must be loaded before Unicode Scripts');
@@ -5503,7 +5503,7 @@ define('utils',[
         return url;
     };
 
-    
+
     utils.randomString = function() {
         return _.random(4294967296).toString(36);
     };
@@ -5558,7 +5558,7 @@ define('utils',[
 });
 
 define('classes/Extension',[],function() {
-    
+
     function Extension(extensionId, extensionName, isOptional, disableInViewer, disableInLight) {
         this.extensionId = extensionId;
         this.extensionName = extensionName;
@@ -5566,7 +5566,7 @@ define('classes/Extension',[],function() {
         this.disableInViewer = disableInViewer;
         this.disableInLight = disableInLight;
     }
-    
+
     return Extension;
 });
 define('settings',[
@@ -5676,7 +5676,7 @@ var prettyPrint;
   // We use things that coerce to strings to make them compact when minified
   // and to defeat aggressive optimizers that fold large string constants.
   var FLOW_CONTROL_KEYWORDS = ["break,continue,do,else,for,if,return,while"];
-  var C_KEYWORDS = [FLOW_CONTROL_KEYWORDS,"auto,case,char,const,default," + 
+  var C_KEYWORDS = [FLOW_CONTROL_KEYWORDS,"auto,case,char,const,default," +
       "double,enum,extern,float,goto,inline,int,long,register,short,signed," +
       "sizeof,static,struct,switch,typedef,union,unsigned,void,volatile"];
   var COMMON_KEYWORDS = [C_KEYWORDS,"catch,class,delete,false,import," +
@@ -5793,8 +5793,8 @@ var prettyPrint;
    */
   var PR_NOCODE = 'nocode';
 
-  
-  
+
+
   /**
    * A set of tokens that can precede a regular expression literal in
    * javascript
@@ -5815,7 +5815,7 @@ var prettyPrint;
    * @const
    */
   var REGEXP_PRECEDER_PATTERN = '(?:^^\\.?|[+-]|[!=]=?=?|\\#|%=?|&&?=?|\\(|\\*=?|[+\\-]=|->|\\/=?|::?|<<?=?|>>?>?=?|,|;|\\?|@|\\[|~|{|\\^\\^?=?|\\|\\|?=?|break|case|continue|delete|do|else|finally|instanceof|return|throw|try|typeof)\\s*';
-  
+
   // CAVEAT: this does not properly handle the case where a regular
   // expression immediately follows another since a regular expression may
   // have flags for case-sensitivity and the like.  Having regexp tokens
@@ -5832,7 +5832,7 @@ var prettyPrint;
    */
   function combinePrefixPatterns(regexs) {
     var capturedGroupIndex = 0;
-  
+
     var needToFoldCase = false;
     var ignoreCase = false;
     for (var i = 0, n = regexs.length; i < n; ++i) {
@@ -5846,7 +5846,7 @@ var prettyPrint;
         break;
       }
     }
-  
+
     var escapeCharToCodeUnit = {
       'b': 8,
       't': 9,
@@ -5855,7 +5855,7 @@ var prettyPrint;
       'f': 0xc,
       'r': 0xd
     };
-  
+
     function decodeEscape(charsetPart) {
       var cc0 = charsetPart.charCodeAt(0);
       if (cc0 !== 92 /* \\ */) {
@@ -5873,7 +5873,7 @@ var prettyPrint;
         return charsetPart.charCodeAt(1);
       }
     }
-  
+
     function encodeEscape(charCode) {
       if (charCode < 0x20) {
         return (charCode < 0x10 ? '\\x0' : '\\x') + charCode.toString(16);
@@ -5882,7 +5882,7 @@ var prettyPrint;
       return (ch === '\\' || ch === '-' || ch === ']' || ch === '^')
           ? "\\" + ch : ch;
     }
-  
+
     function caseFoldCharset(charSet) {
       var charsetParts = charSet.substring(1, charSet.length - 1).match(
           new RegExp(
@@ -5896,10 +5896,10 @@ var prettyPrint;
               'g'));
       var ranges = [];
       var inverse = charsetParts[0] === '^';
-  
+
       var out = ['['];
       if (inverse) { out.push('^'); }
-  
+
       for (var i = inverse ? 1 : 0, n = charsetParts.length; i < n; ++i) {
         var p = charsetParts[i];
         if (/\\[bdsw]/i.test(p)) {  // Don't muck with named groups.
@@ -5928,7 +5928,7 @@ var prettyPrint;
           }
         }
       }
-  
+
       // [[1, 10], [3, 4], [8, 12], [14, 14], [16, 16], [17, 17]]
       // -> [[1, 12], [14, 14], [16, 17]]
       ranges.sort(function (a, b) { return (a[0] - b[0]) || (b[1]  - a[1]); });
@@ -5942,7 +5942,7 @@ var prettyPrint;
           consolidatedRanges.push(lastRange = range);
         }
       }
-  
+
       for (var i = 0; i < consolidatedRanges.length; ++i) {
         var range = consolidatedRanges[i];
         out.push(encodeEscape(range[0]));
@@ -5954,7 +5954,7 @@ var prettyPrint;
       out.push(']');
       return out.join('');
     }
-  
+
     function allowAnywhereFoldCaseAndRenumberGroups(regex) {
       // Split into character sets, escape sequences, punctuation strings
       // like ('(', '(?:', ')', '^'), and runs of characters that do not
@@ -5973,12 +5973,12 @@ var prettyPrint;
               + ')',
               'g'));
       var n = parts.length;
-  
+
       // Maps captured group numbers to the number they will occupy in
       // the output or to -1 if that has not been determined, or to
       // undefined if they need not be capturing in the output.
       var capturedGroups = [];
-  
+
       // Walk over and identify back references to build the capturedGroups
       // mapping.
       for (var i = 0, groupIndex = 0; i < n; ++i) {
@@ -6000,7 +6000,7 @@ var prettyPrint;
           }
         }
       }
-  
+
       // Renumber groups and reduce capturing groups to non-capturing groups
       // where possible.
       for (var i = 1; i < capturedGroups.length; ++i) {
@@ -6022,13 +6022,13 @@ var prettyPrint;
           }
         }
       }
-  
+
       // Remove any prefix anchors so that the output will match anywhere.
       // ^^ really does mean an anchored match though.
       for (var i = 0; i < n; ++i) {
         if ('^' === parts[i] && '^' !== parts[i + 1]) { parts[i] = ''; }
       }
-  
+
       // Expand letters to groups to handle mixing of case-sensitive and
       // case-insensitive patterns if necessary.
       if (regex.ignoreCase && needToFoldCase) {
@@ -6048,10 +6048,10 @@ var prettyPrint;
           }
         }
       }
-  
+
       return parts.join('');
     }
-  
+
     var rewritten = [];
     for (var i = 0, n = regexs.length; i < n; ++i) {
       var regex = regexs[i];
@@ -6059,7 +6059,7 @@ var prettyPrint;
       rewritten.push(
           '(?:' + allowAnywhereFoldCaseAndRenumberGroups(regex) + ')');
     }
-  
+
     return new RegExp(rewritten.join('|'), ignoreCase ? 'gi' : 'g');
   }
 
@@ -6110,12 +6110,12 @@ var prettyPrint;
    */
   function extractSourceSpans(node, isPreformatted) {
     var nocode = /(?:^|\s)nocode(?:\s|$)/;
-  
+
     var chunks = [];
     var length = 0;
     var spans = [];
     var k = 0;
-  
+
     function walk(node) {
       var type = node.nodeType;
       if (type == 1) {  // Element
@@ -6145,9 +6145,9 @@ var prettyPrint;
         }
       }
     }
-  
+
     walk(node);
-  
+
     return {
       sourceCode: chunks.join('').replace(/\n$/, ''),
       spans: spans
@@ -6493,7 +6493,7 @@ var prettyPrint;
       // which are the following plus space, tab, and newline: { }
       // | & $ ; < >
       // ...
-      
+
       // A word beginning with # causes that word and all remaining
       // characters on that line to be ignored.
 
@@ -6574,9 +6574,9 @@ var prettyPrint;
   function numberLines(node, opt_startLineNum, isPreformatted) {
     var nocode = /(?:^|\s)nocode(?:\s|$)/;
     var lineBreak = /\r\n?|\n/;
-  
+
     var document = node.ownerDocument;
-  
+
     var li = document.createElement('li');
     while (node.firstChild) {
       li.appendChild(node.firstChild);
@@ -6584,7 +6584,7 @@ var prettyPrint;
     // An array of lines.  We split below, so this is initialized to one
     // un-split line.
     var listItems = [li];
-  
+
     function walk(node) {
       var type = node.nodeType;
       if (type == 1 && !nocode.test(node.className)) {  // Element
@@ -6619,7 +6619,7 @@ var prettyPrint;
         }
       }
     }
-  
+
     // Split a line after the given node.
     function breakAfter(lineEndNode) {
       // If there's nothing to the right, then we can skip ending the line
@@ -6629,7 +6629,7 @@ var prettyPrint;
         lineEndNode = lineEndNode.parentNode;
         if (!lineEndNode) { return; }
       }
-  
+
       function breakLeftOf(limit, copy) {
         // Clone shallowly if this node needs to be on both sides of the break.
         var rightSide = copy ? limit.cloneNode(false) : limit;
@@ -6651,9 +6651,9 @@ var prettyPrint;
         }
         return rightSide;
       }
-  
+
       var copiedListItem = breakLeftOf(lineEndNode.nextSibling, 0);
-  
+
       // Walk the parent chain until we reach an unattached LI.
       for (var parent;
            // Check nodeType since IE invents document fragments.
@@ -6663,19 +6663,19 @@ var prettyPrint;
       // Put it on the list of lines for later processing.
       listItems.push(copiedListItem);
     }
-  
+
     // Split lines while there are lines left to split.
     for (var i = 0;  // Number of lines that have been split so far.
          i < listItems.length;  // length updated by breakAfter calls.
          ++i) {
       walk(listItems[i]);
     }
-  
+
     // Make sure numeric indices show correctly.
     if (opt_startLineNum === (opt_startLineNum|0)) {
       listItems[0].setAttribute('value', opt_startLineNum);
     }
-  
+
     var ol = document.createElement('ol');
     ol.className = 'linenums';
     var offset = Math.max(0, ((opt_startLineNum - 1 /* zero index */)) | 0) || 0;
@@ -6690,7 +6690,7 @@ var prettyPrint;
       }
       ol.appendChild(li);
     }
-  
+
     node.appendChild(ol);
   }
   /**
@@ -6711,23 +6711,23 @@ var prettyPrint;
     var isIE8OrEarlier = /\bMSIE\s(\d+)/.exec(navigator.userAgent);
     isIE8OrEarlier = isIE8OrEarlier && +isIE8OrEarlier[1] <= 8;
     var newlineRe = /\n/g;
-  
+
     var source = job.sourceCode;
     var sourceLength = source.length;
     // Index into source after the last code-unit recombined.
     var sourceIndex = 0;
-  
+
     var spans = job.spans;
     var nSpans = spans.length;
     // Index into spans after the last span which ends at or before sourceIndex.
     var spanIndex = 0;
-  
+
     var decorations = job.decorations;
     var nDecorations = decorations.length;
     // Index into decorations after the last decoration which ends at or before
     // sourceIndex.
     var decorationIndex = 0;
-  
+
     // Remove all zero-length decorations.
     decorations[nDecorations] = sourceLength;
     var decPos, i;
@@ -6740,7 +6740,7 @@ var prettyPrint;
       }
     }
     nDecorations = decPos;
-  
+
     // Simplify decorations.
     for (i = decPos = 0; i < nDecorations;) {
       var startPos = decorations[i];
@@ -6754,9 +6754,9 @@ var prettyPrint;
       decorations[decPos++] = startDec;
       i = end;
     }
-  
+
     nDecorations = decorations.length = decPos;
-  
+
     var sourceNode = job.sourceNode;
     var oldDisplay;
     if (sourceNode) {
@@ -6768,11 +6768,11 @@ var prettyPrint;
       while (spanIndex < nSpans) {
         var spanStart = spans[spanIndex];
         var spanEnd = spans[spanIndex + 2] || sourceLength;
-  
+
         var decEnd = decorations[decorationIndex + 2] || sourceLength;
-  
+
         var end = Math.min(spanEnd, decEnd);
-  
+
         var textNode = spans[spanIndex + 1];
         var styledText;
         if (textNode.nodeType !== 1  // Don't muck with <BR>s or <LI>s
@@ -6800,9 +6800,9 @@ var prettyPrint;
             parentNode.insertBefore(textNode, span.nextSibling);
           }
         }
-  
+
         sourceIndex = end;
-  
+
         if (sourceIndex >= spanEnd) {
           spanIndex += 2;
         }
@@ -7232,7 +7232,7 @@ var prettyPrint;
   // function that does not conform to the AMD API.
   if (typeof define === "function" && define['amd']) {
     define("google-code-prettify", [], function () {
-      return PR; 
+      return PR;
     });
   }
 })();
@@ -7243,7 +7243,7 @@ if (typeof exports === "object" && typeof require === "function") // we're in a 
     Markdown = exports;
 else
     Markdown = {};
-    
+
 // The following text is included for historical reasons, but should
 // be taken with a pinch of salt; it's not all true anymore.
 
@@ -7349,28 +7349,28 @@ else
         this.setOptions = function(optionsParam) {
             options = optionsParam;
         };
-        
+
         var pluginHooks = this.hooks = new HookCollection();
-        
+
         // given a URL that was encountered by itself (without markup), should return the link text that's to be given to this link
         pluginHooks.addNoop("plainLinkText");
-        
+
         // called with the orignal text as given to makeHtml. The result of this plugin hook is the actual markdown source that will be cooked
         pluginHooks.addNoop("preConversion");
-        
+
         // called with the text once all normalizations have been completed (tabs to spaces, line endings, etc.), but before any conversions have
         pluginHooks.addNoop("postNormalization");
-        
+
         // Called with the text before / after creating block elements like code blocks and lists. Note that this is called recursively
         // with inner content, e.g. it's called with the full text, and then only with the content of a blockquote. The inner
         // call will receive outdented text.
         pluginHooks.addNoop("preBlockGamut");
         pluginHooks.addNoop("postBlockGamut");
-        
+
         // called with the text of a single block element before / after the span-level conversions (bold, code spans, etc.) have been made
         pluginHooks.addNoop("preSpanGamut");
         pluginHooks.addNoop("postSpanGamut");
-        
+
         // called with the final cooked HTML code. The result of this plugin hook is the actual output of makeHtml
         pluginHooks.addNoop("postConversion");
 
@@ -7400,7 +7400,7 @@ else
             // Don't do that.
             if (g_urls)
                 throw new Error("Recursive call to converter.makeHtml");
-        
+
             // Create the private state objects.
             g_urls = new SaveHash();
             g_titles = new SaveHash();
@@ -7435,7 +7435,7 @@ else
             // match consecutive blank lines with /\n+/ instead of something
             // contorted like /[ \t]*\n+/ .
             text = text.replace(/^[ \t]+$/mg, "");
-            
+
             text = pluginHooks.postNormalization(text);
 
             // Turn block-level HTML blocks into hash entries
@@ -7574,7 +7574,7 @@ else
             text = text.replace(/^(<(p|div|h[1-6]|blockquote|pre|table|dl|ol|ul|script|noscript|form|fieldset|iframe|math)\b[^\r]*?.*<\/\2>[ \t]*(?=\n+)\n)/gm, hashElement);
 
             // Special case just for <hr />. It was easier to make a special case than
-            // to make the other regex more complicated.  
+            // to make the other regex more complicated.
 
             /*
             text = text.replace(/
@@ -7647,7 +7647,7 @@ else
 
             return blockText;
         }
-        
+
         var blockGamutHookCallback = function (t) { return _RunBlockGamut(t); }
 
         function _RunBlockGamut(text, doNotUnhash) {
@@ -7655,9 +7655,9 @@ else
             // These are all the transformations that form block-level
             // tags like paragraphs, headers, and list items.
             //
-            
+
             text = pluginHooks.preBlockGamut(text, blockGamutHookCallback);
-            
+
             text = _DoHeaders(text);
 
             // Do Horizontal Rules:
@@ -7669,7 +7669,7 @@ else
             text = _DoLists(text);
             text = _DoCodeBlocks(text);
             text = _DoBlockQuotes(text);
-            
+
             text = pluginHooks.postBlockGamut(text, blockGamutHookCallback);
 
             // We already ran _HashHTMLBlocks() before, in Markdown(), but that
@@ -7689,7 +7689,7 @@ else
             //
 
             text = pluginHooks.preSpanGamut(text);
-            
+
             text = _DoCodeSpans(text);
             text = _EscapeSpecialCharsWithinTagAttributes(text);
             text = _EncodeBackslashEscapes(text);
@@ -7703,15 +7703,15 @@ else
             // Must come after _DoAnchors(), because you can use < and >
             // delimiters in inline links like [this](<url>).
             text = _DoAutoLinks(text);
-            
+
             text = text.replace(/~P/g, "://"); // put in place to prevent autolinking; reset now
-            
+
             text = _EncodeAmpsAndAngles(text);
             text = options._DoItalicsAndBold ? options._DoItalicsAndBold(text) : _DoItalicsAndBold(text);
 
             // Do hard breaks:
             text = text.replace(/  +\n/g, " <br>\n");
-            
+
             text = pluginHooks.postSpanGamut(text);
 
             return text;
@@ -7723,7 +7723,7 @@ else
             // don't conflict with their use in Markdown for code, italics and strong.
             //
 
-            // Build a regex to find HTML tags and comments.  See Friedl's 
+            // Build a regex to find HTML tags and comments.  See Friedl's
             // "Mastering Regular Expressions", 2nd Ed., pp. 200-201.
 
             // SE: changed the comment part of the regex
@@ -7797,7 +7797,7 @@ else
                             |
                             [^()\s]
                         )*?
-                    )>?                
+                    )>?
                     [ \t]*
                     (                       // $5
                         (['"])              // quote char = $6
@@ -7936,7 +7936,7 @@ else
 
             return text;
         }
-        
+
         function attributeEncode(text) {
             // unconditionally replace angle brackets here -- what ends up in an attribute (e.g. alt or title)
             // never makes sense to have verbatim HTML in it (and the sanitizer would totally break it)
@@ -7969,7 +7969,7 @@ else
                     return whole_match;
                 }
             }
-            
+
             alt_text = escapeCharacters(attributeEncode(alt_text), "*_[]()");
             url = escapeCharacters(url, "*_");
             var result = "<img src=\"" + url + "\" alt=\"" + alt_text + "\"";
@@ -7989,21 +7989,19 @@ else
         }
 
         function _DoHeaders(text) {
-			(function processSetextStyleHeaders() {
-
+          (function processSetextStyleHeaders() {
             // Setext-style headers:
             //  Header 1
             //  ========
-            //  
+            //
             //  Header 2
             //  --------
             //
-				text = text.replace(/^(.+)[ \t]*\n=+[ \t]*\n+/gm, function (wholeMatch, m1) { return '# ' + m1; });
-				text = text.replace(/^(.+)[ \t]*\n-+[ \t]*\n+/gm, function (matchFound, m1) { return '## ' + m1; });
-			})();
+				    text = text.replace(/^(.+)[ \t]*\n=+[ \t]*\n+/gm, function (wholeMatch, m1) { return '# ' + m1; });
+				    text = text.replace(/^(.+)[ \t]*\n-+[ \t]*\n+/gm, function (matchFound, m1) { return '## ' + m1; });
+			     })();
 
-			return (function processATXStyleHeaders()  {
-
+			     return (function processATXStyleHeaders()  {
             // atx-style headers:
             //  # Header 1
             //  ## Header 2
@@ -8023,35 +8021,35 @@ else
             /gm, function() {...});
             */
 
-				var prevData = { level:1, code:[] };
+            var prevData = { level:1, code:[] };
 
-				function processLevel(level) {
-					// maintain the code digit
-					prevData.code[level-1] = prevData.code[level-1]+1 || (1===level ? 1 : 1);
+            function processLevel(level) {
+              // maintain the code digit
+              prevData.code[level-1] = prevData.code[level-1]+1 || (1===level ? 1 : 1);
 
-					// maintain the code length
-					if((level - prevData.level) < 0) prevData.code = prevData.code.slice(0, level);
+              // maintain the code length
+              if((level - prevData.level) < 0) prevData.code = prevData.code.slice(0, level);
 
-					// save the level
-					prevData.level = level;
+              // save the level
+              prevData.level = level;
 
-					return prevData.code.join('.');
-                }
+              return prevData.code.join('.');
+            }
 
-				return text.replace(/^(\#{1,6})[ \t]*(.+?)[ \t]*\#*\n+/gm, function (wholeMatch, m1, m2) {
-					var level = m1.length;
-					var levelCode = '';
+            return text.replace(/^(\#{1,6})[ \t]*(.+?)[ \t]*\#*\n+/gm, function (wholeMatch, m1, m2) {
+              var level = m1.length;
+              var levelCode = '';
 
-					// session title not starts with a numeric number
-					if(isNaN(parseInt(m2))) {
-						levelCode = processLevel(level);
+              // session title not starts with a numeric number
+              if(isNaN(parseInt(m2))) {
+                levelCode = processLevel(level);
 
-						if(1 === level) levelCode = 'Section ' + levelCode + '.';
-					}
+                if(1 === level) levelCode = 'Section ' + levelCode + '.';
+              }
 
-					return ['<h', level, '>', levelCode, ' ', _RunSpanGamut(m2), '</h', level, '>\n\n'].join('');
-				});
-			})();
+              return ['<h', level, '>', levelCode, ' ', _RunSpanGamut(m2), '</h', level, '>\n\n'].join('');
+            });
+          })();
         }
 
         function _DoLists(text, isInsideParagraphlessListItem) {
@@ -8172,7 +8170,7 @@ else
             //
             // We changed this to behave identical to MarkdownSharp. This is the constructed RegEx,
             // with {MARKER} being one of \d+[.] or [*+-], depending on list_type:
-        
+
             /*
             list_str = list_str.replace(/
                 (^[ \t]*)                       // leading whitespace = $1
@@ -8221,7 +8219,7 @@ else
         function _DoCodeBlocks(text) {
             //
             //  Process Markdown `<pre><code>` blocks.
-            //  
+            //
 
             /*
             text = text.replace(/
@@ -8269,26 +8267,26 @@ else
         function _DoCodeSpans(text) {
             //
             // * Backtick quotes are used for <code></code> spans.
-            // 
+            //
             // * You can use multiple backticks as the delimiters if you want to
             //   include literal backticks in the code span. So, this input:
-            //     
+            //
             //      Just type ``foo `bar` baz`` at the prompt.
-            //     
+            //
             //   Will translate to:
-            //     
+            //
             //      <p>Just type <code>foo `bar` baz</code> at the prompt.</p>
-            //     
+            //
             //   There's no arbitrary limit to the number of backticks you
             //   can use as delimters. If you need three consecutive backticks
             //   in your code, use four for delimiters, etc.
             //
             // * You can use spaces to get literal backticks at the edges:
-            //     
+            //
             //      ... type `` `bar` `` ...
-            //     
+            //
             //   Turns to:
-            //     
+            //
             //      ... type <code>`bar`</code> ...
             //
 
@@ -8421,7 +8419,7 @@ else
 
             var grafs = text.split(/\n{2,}/g);
             var grafsOut = [];
-            
+
             var markerRe = /~K(\d+)K/;
 
             //
@@ -8536,7 +8534,7 @@ else
             }
             return "<" + protocol + link + ">" + tail;
         }
-        
+
         function _DoAutoLinks(text) {
 
             // note that at this point, all other URL in the text are already hyperlinked as <a href=""></a>
@@ -8549,7 +8547,7 @@ else
             text = text.replace(autoLinkRegex, handleTrailingParens);
 
             //  autolink anything like <http://example.com>
-            
+
             var replacer = function (wholematch, m1) { return "<a href=\"" + m1 + "\">" + pluginHooks.plainLinkText(m1) + "</a>"; }
             text = text.replace(/<((https?|ftp):[^'">\s]+)>/gi, replacer);
 
@@ -8631,7 +8629,7 @@ else
 
         var _problemUrlChars = /(?:["'*()[\]:]|~D)/g;
 
-        // hex-encodes some unusual "problem" chars in URLs to avoid URL detection problems 
+        // hex-encodes some unusual "problem" chars in URLs to avoid URL detection problems
         function encodeProblemUrlChars(url) {
             if (!url)
                 return "";
@@ -8681,7 +8679,7 @@ define("bower-libs/pagedown-ace/Markdown.Converter", function(){});
 
 (function () {
 
-    
+
     var util = {},
         position = {},
         ui = {},
@@ -8700,39 +8698,39 @@ define("bower-libs/pagedown-ace/Markdown.Converter", function(){});
     var defaultsStrings = {
         bold: getMsg("Strong") + " <strong>",
         boldexample: getMsg("strong text"),
-        
+
         italic: getMsg("Emphasis") + " <em>",
         italicexample: getMsg("emphasized text"),
-        
+
         link: getMsg("Hyperlink") + " <a>",
         linkdescription: getMsg("enter link description here"),
         linkdialog: "<p><b>Insert Hyperlink</b></p><p>http://example.com/ \"optional title\"</p>",
-        
+
         quote: getMsg("Blockquote") + " <blockquote>",
         quoteexample: getMsg("Blockquote"),
-        
+
         code: getMsg("Code Sample") + " <pre><code>",
         codeexample: getMsg("enter code here"),
-        
+
         image: getMsg("Image") + " <img>",
         imagedescription: getMsg("enter image description here"),
         imagedialog: "<p><b>Insert Image</b></p><p>http://example.com/images/diagram.jpg \"optional title\"<br><br>Need <a href='http://www.google.com/search?q=free+image+hosting' target='_blank'>free image hosting?</a></p>",
-        
+
         olist: getMsg("Numbered List") + " <ol>",
         ulist: getMsg("Bulleted List") + " <ul>",
         litem: getMsg("List item"),
-        
+
         heading: getMsg("Heading") + " <h1>/<h2>",
         headingexample: getMsg("Heading"),
-        
+
         hr: getMsg("Horizontal Rule") + " <hr>",
-        
+
         undo: getMsg("Undo") + " -",
         redo: getMsg("Redo") + " -",
-        
+
         help: "Markdown Editing Help"
     };
-    
+
     var keyStrokes = {
         bold: {
             win: 'Ctrl-B',
@@ -8820,7 +8818,7 @@ define("bower-libs/pagedown-ace/Markdown.Converter", function(){});
     // - run() actually starts the editor; should be called after all necessary plugins are registered. Calling this more than once is a no-op.
     // - refreshPreview() forces the preview to be updated. This method is only available after run() was called.
     Markdown.Editor = function (markdownConverter, idPostfix, options) {
-        
+
         options = options || {};
 
         if (typeof options.handler === "function") { //backwards compatible behavior
@@ -9426,7 +9424,7 @@ define("bower-libs/pagedown-ace/Markdown.Converter", function(){});
             //Not necessary
             //saveState();
         };
-        
+
         this.reinit = function(content, start, end, scrollTop) {
             undoStack = [];
             stackPtr = 0;
@@ -9493,7 +9491,7 @@ define("bower-libs/pagedown-ace/Markdown.Converter", function(){});
             })(inputArea.session.doc.indexToPosition(stateObj.start), inputArea.session.doc.indexToPosition(stateObj.end)));
             inputArea.renderer.scrollToY(stateObj.scrollTop);
             inputArea.focus();
-            
+
             /*benweet
             if (!util.isVisible(inputArea)) {
                 return;
@@ -9524,10 +9522,10 @@ define("bower-libs/pagedown-ace/Markdown.Converter", function(){});
         };
 
         this.setInputAreaSelectionStartEnd = function () {
-            
+
             stateObj.start = stateObj.before.length;
             stateObj.end = stateObj.after.length;
-            
+
             /*benweet
             if (!panels.ieCachedRange && (inputArea.selectionStart || inputArea.selectionStart === 0)) {
 
@@ -9579,10 +9577,10 @@ define("bower-libs/pagedown-ace/Markdown.Converter", function(){});
         // Restore this state into the input area.
         this.restore = function () {
             // Here we could do editor.setValue but we want to update the less we can for undo management
-            
+
             // Find the first modified char
             var startIndex = 0;
-            var startIndexMax = stateObj.before.length; 
+            var startIndexMax = stateObj.before.length;
             while(startIndex < startIndexMax) {
                 if(stateObj.before.charCodeAt(startIndex) !== stateObj.text.charCodeAt(startIndex))
                     break;
@@ -9598,7 +9596,7 @@ define("bower-libs/pagedown-ace/Markdown.Converter", function(){});
                     break;
                 endIndex++;
             }
-            
+
             var Range = ace.require('ace/range').Range;
             var range = (function(posStart, posEnd) {
                 return new Range(posStart.row, posStart.column, posEnd.row, posEnd.column);
@@ -9854,9 +9852,9 @@ define("bower-libs/pagedown-ace/Markdown.Converter", function(){});
 
         var background = doc.createElement("div"),
             style = background.style;
-        
+
         background.className = "wmd-prompt-background";
-        
+
         style.position = "absolute";
         style.top = "0";
 
@@ -10079,7 +10077,7 @@ define("bower-libs/pagedown-ace/Markdown.Converter", function(){});
             addKeyCmd(identifierList);
         }
         addKeyCmd(['bold', 'italic', 'link', 'quote', 'code', 'image', 'olist', 'ulist', 'heading', 'hr']);
-        
+
         /*benweet
         util.addEvent(inputBox, keyEvent, function (key) {
 
@@ -10175,7 +10173,7 @@ define("bower-libs/pagedown-ace/Markdown.Converter", function(){});
             });
         }
         */
-       
+
         // life 新添加函数
         // life
         // isImage 2015/3/1
@@ -10206,7 +10204,7 @@ define("bower-libs/pagedown-ace/Markdown.Converter", function(){});
             var a = commandProto.insertLink(chunks, fixupInputArea, link, text, isImage);
             if(!a) fixupInputArea();
         }
-       
+
         // life
         MD.insertLink = insertLinkLife;
         MD.insertLink2 = insertLinkLife;
@@ -10607,7 +10605,7 @@ define("bower-libs/pagedown-ace/Markdown.Converter", function(){});
             this.addLinkDef(chunk, null);
         }
         else {
-            
+
             // We're moving start and end tag back into the selection, since (as we're in the else block) we're not
             // *removing* a link, but *adding* one, so whatever findTags() found is now back to being part of the
             // link text. linkEnteredCallback takes care of escaping any brackets.
@@ -10868,7 +10866,7 @@ define("bower-libs/pagedown-ace/Markdown.Converter", function(){});
         // end of change
 
         /*benweet Don't really know the purpose of it but it is destructive
-        
+
         if (chunk.after) {
             chunk.after = chunk.after.replace(/^\n?/, "\n");
         }
@@ -11098,7 +11096,7 @@ define("bower-libs/pagedown-ace/Markdown.Converter", function(){});
 
     };
 
-    // 要改成 ## ### #### 
+    // 要改成 ## ### ####
     // life 2015/7/12
     commandProto.doHeading = function (chunk, postProcessing) {
         // Remove leading/trailing whitespace and reduce internal spaces to single spaces.
@@ -11286,7 +11284,7 @@ define("pagedown-ace", function(){});
     });
     return text;
   }
-  
+
   function slugify(text) {
     return text.toLowerCase()
     .replace(/\s+/g, '-') // Replace spaces with -
@@ -11310,7 +11308,7 @@ define("pagedown-ace", function(){});
     // Stores html blocks we generate in hooks so that
     // they're not destroyed if the user is using a sanitizing converter
     this.hashBlocks = [];
-    
+
     // Stores footnotes
     this.footnotes = {};
     this.usedFootnotes = [];
@@ -11375,7 +11373,7 @@ define("pagedown-ace", function(){});
     if (contains(options.extensions, "newlines")) {
       postSpanGamutTransformations.push("newlines");
     }
-    
+
     converter.hooks.chain("postNormalization", function(text) {
       return extra.doTransform(postNormalizationTransformations, text) + '\n';
     });
@@ -11434,7 +11432,7 @@ define("pagedown-ace", function(){});
   Markdown.Extra.prototype.hashExtraInline = function(block) {
     return '~X' + (this.hashBlocks.push(block) - 1) + 'X';
   };
-  
+
   // Replace placeholder blocks in `text` with their corresponding
   // html blocks in the hashBlocks array.
   Markdown.Extra.prototype.unHashExtraBlocks = function(text) {
@@ -11453,7 +11451,7 @@ define("pagedown-ace", function(){});
     recursiveUnHash();
     return text;
   };
-  
+
   // Wrap headers to make sure they won't be in def lists
   Markdown.Extra.prototype.wrapHeaders = function(text) {
     function wrap(text) {
@@ -11478,11 +11476,11 @@ define("pagedown-ace", function(){});
     "(?=[\\-|=]+\\s*(?:\\n|0x03))", "gm"); // underline lookahead
   var fcbAttributes =  new RegExp("^(```[ \\t]*[^{\\s]*)[ \\t]+" + attrBlock + "[ \\t]*\\n" +
     "(?=([\\s\\S]*?)\\n```[ \\t]*(\\n|0x03))", "gm");
-      
+
   // Extract headers attribute blocks, move them above the element they will be
   // applied to, and hash them for later.
   Markdown.Extra.prototype.hashHeaderAttributeBlocks = function(text) {
-    
+
     var self = this;
     function attributeCallback(wholeMatch, pre, attr) {
       return '<p>~XX' + (self.hashBlocks.push(attr) - 1) + 'XX</p>\n' + pre + "\n";
@@ -11492,7 +11490,7 @@ define("pagedown-ace", function(){});
     text = text.replace(hdrAttributesB, attributeCallback);  // underline headers
     return text;
   };
-  
+
   // Extract FCB attribute blocks, move them above the element they will be
   // applied to, and hash them for later.
   Markdown.Extra.prototype.hashFcbAttributeBlocks = function(text) {
@@ -11660,7 +11658,7 @@ define("pagedown-ace", function(){});
   /******************************************************************
    * Footnotes                                                      *
    *****************************************************************/
-  
+
   // Strip footnote, store in hashes.
   Markdown.Extra.prototype.stripFootnoteDefinitions = function(text) {
     var self = this;
@@ -11677,7 +11675,7 @@ define("pagedown-ace", function(){});
 
     return text;
   };
-  
+
 
   // Find and convert footnotes references.
   Markdown.Extra.prototype.doFootnotes = function(text) {
@@ -11730,8 +11728,8 @@ define("pagedown-ace", function(){});
     text += '</ol>\n</div>';
     return text;
   };
-  
-  
+
+
   /******************************************************************
   * Fenced Code Blocks  (gfm)                                       *
   ******************************************************************/
@@ -11742,7 +11740,7 @@ define("pagedown-ace", function(){});
       code = code.replace(/&/g, "&amp;");
       code = code.replace(/</g, "&lt;");
       code = code.replace(/>/g, "&gt;");
-      // These were escaped by PageDown before postNormalization 
+      // These were escaped by PageDown before postNormalization
       code = code.replace(/~D/g, "$$");
       code = code.replace(/~T/g, "~");
       return code;
@@ -11778,7 +11776,7 @@ define("pagedown-ace", function(){});
   /******************************************************************
   * SmartyPants                                                     *
   ******************************************************************/
-  
+
   Markdown.Extra.prototype.educatePants = function(text) {
     var self = this;
     var result = '';
@@ -11808,7 +11806,7 @@ define("pagedown-ace", function(){});
     self.smartyPantsLastChar = result.substring(result.length - 1);
     return result;
   };
-    
+
   function revertPants(wholeMatch, m1) {
     var blockText = m1;
     blockText = blockText.replace(/&\#8220;/g, "\"");
@@ -11820,7 +11818,7 @@ define("pagedown-ace", function(){});
     blockText = blockText.replace(/&\#8230;/g, "...");
     return blockText;
   }
-  
+
   Markdown.Extra.prototype.applyPants = function(text) {
     // Dashes
     text = text.replace(/---/g, "&#8212;").replace(/--/g, "&#8211;");
@@ -11828,7 +11826,7 @@ define("pagedown-ace", function(){});
     text = text.replace(/\.\.\./g, "&#8230;").replace(/\.\s\.\s\./g, "&#8230;");
     // Backticks
     text = text.replace(/``/g, "&#8220;").replace (/''/g, "&#8221;");
-    
+
     if(/^'$/.test(text)) {
       // Special case: single-character ' token
       if(/\S/.test(this.smartyPantsLastChar)) {
@@ -11856,24 +11854,24 @@ define("pagedown-ace", function(){});
 
     // Special case for decade abbreviations (the '80s):
     text = text.replace(/'(?=\d{2}s)/g, "&#8217;");
-    
+
     // Get most opening single quotes:
     text = text.replace(/(\s|&nbsp;|--|&[mn]dash;|&\#8211;|&\#8212;|&\#x201[34];)'(?=\w)/g, "$1&#8216;");
-    
+
     // Single closing quotes:
     text = text.replace(/([^\s\[\{\(\-])'/g, "$1&#8217;");
     text = text.replace(/'(?=\s|s\b)/g, "&#8217;");
 
     // Any remaining single quotes should be opening ones:
     text = text.replace(/'/g, "&#8216;");
-    
+
     // Get most opening double quotes:
     text = text.replace(/(\s|&nbsp;|--|&[mn]dash;|&\#8211;|&\#8212;|&\#x201[34];)"(?=\w)/g, "$1&#8220;");
-    
+
     // Double closing quotes:
     text = text.replace(/([^\s\[\{\(\-])"/g, "$1&#8221;");
     text = text.replace(/"(?=\s)/g, "&#8221;");
-    
+
     // Any remaining quotes should be opening ones.
     text = text.replace(/"/ig, "&#8220;");
     return text;
@@ -11887,7 +11885,7 @@ define("pagedown-ace", function(){});
     text = text.replace(/(<([a-zA-Z1-6]+)\b([^\n>]*?)(\/)?>)/g, revertPants);
     return text;
   };
-  
+
   /******************************************************************
   * Definition Lists                                                *
   ******************************************************************/
@@ -12035,7 +12033,7 @@ define("pagedown-ace", function(){});
       return previousTag ? wholeMatch : " <br>\n";
     });
   };
-  
+
 })();
 
 
@@ -12096,7 +12094,7 @@ SmartyPants does not modify characters within <pre>, <code>, <kbd>, or <script> 
             $('#preview-contents pre code').each(function () {
                 var classes = $(this).attr('class');
                 if (classes != 'language-flow' && classes != 'language-sequence' && classes != 'language-mermaid' && classes != 'language-chart') {
-                    $(this).parent().addClass('prettyprint linenums'); 
+                    $(this).parent().addClass('prettyprint linenums');
                 }
             });
             prettify.prettyPrint();
@@ -12124,13 +12122,13 @@ SmartyPants does not modify characters within <pre>, <code>, <kbd>, or <script> 
                 });
             });
         }
-        
+
         var extraOptions = {
             extensions: markdownExtra.config.extensions
         };
-      
+
         extraOptions.highlighter = "prettify";
-        
+
         onToggleMode(editor);
 
         Markdown.Extra.init(converter, extraOptions);
@@ -12156,13 +12154,13 @@ define('extensions/mathJax',[
     "classes/Extension",
     "mathjax",
 ], function(utils, Extension) {
-	
+
 	var mathJax = new Extension("mathJax", "MathJax", true);
     mathJax.defaultConfig = {
         tex: "{}",
         tex2jax: '{ inlineMath: [["$","$"],["\\\\\\\\(","\\\\\\\\)"]], displayMath: [["$$","$$"],["\\\\[","\\\\]"]], processEscapes: true }'
     };
-    
+
     /*jshint ignore:start */
     mathJax.onPagedownConfigure = function(editorObject) {
         t = document.getElementById("preview-contents");
@@ -12171,13 +12169,13 @@ define('extensions/mathJax',[
         converter.hooks.chain("preConversion", p);
         converter.hooks.chain("postConversion", d);
     };
-    
+
     var afterRefreshCallback;
     mathJax.onAsyncPreview = function(callback) {
         afterRefreshCallback = callback;
         j();
     };
-    
+
     // From math.stackexchange.com...
 
     function b(a, f, b) {
@@ -12196,7 +12194,7 @@ define('extensions/mathJax',[
         /`/.test(a) ? (a = a.replace(/~/g, "~T").replace(/(^|[^\\])(`+)([^\n]*?[^`\n])\2(?!`)/gm, function(a) {
             return a.replace(/\$/g, "~D")
         }), f = function(a) {
-            return a.replace(/~([TD])/g, 
+            return a.replace(/~([TD])/g,
             function(a, c) {
                 return {T: "~",D: "$"}[c]
             })
@@ -12252,7 +12250,7 @@ define('extensions/mathJax',[
         b.push(a.substring(e));
         return b
     };
-    
+
     (function() {
         var b = MathJax.Hub;
         if (!b.Cancel) {
@@ -12270,7 +12268,7 @@ define('extensions/mathJax',[
                 d.Augment({Translate: function(j, g) {
                         if (b.cancelTypeset || g.cancelled)
                             throw Error("MathJax Canceled");
-                        return e.call(d, 
+                        return e.call(d,
                         j, g)
                     }})
             });
@@ -12318,7 +12316,7 @@ define('extensions/markdownSectionParser',[
     };
 
     markdownSectionParser.onPagedownConfigure = function(editor) {
-        
+
         // Build a regexp to look for section delimiters
         var regexp = '^.+[ \\t]*\\n=+[ \\t]*\\n+|^.+[ \\t]*\\n-+[ \\t]*\\n+|^\\#{1,6}[ \\t]*.+?[ \\t]*\\#*\\n+'; // Title delimiters
         if(markdownExtra.enabled) {
@@ -12339,7 +12337,7 @@ define('extensions/markdownSectionParser',[
             regexp = '^[ \\t]*\\n\\\\?\\\\begin\\{[a-z]*\\*?\\}[\\s\\S]*?\\\\end\\{[a-z]*\\*?\\}|' + regexp; // \\begin{...} \\end{...} math block delimiters
         }
         regexp = new RegExp(regexp, 'gm');
-        
+
         var converter = editor.getConverter();
         converter.hooks.chain("preConversion", function(text) {
             // console.log('preConversion');
@@ -12411,7 +12409,7 @@ define('extensions/partialRendering',[
                 return true;
             }
         });
-        
+
         // Find modified section starting from bottom
         var rightIndex = -sectionList.length;
         _.some(sectionList.slice().reverse(), function(section, index) {
@@ -12420,7 +12418,7 @@ define('extensions/partialRendering',[
                 return true;
             }
         });
-        
+
         if(leftIndex - rightIndex > sectionList.length) {
             // Prevent overlap
             rightIndex = leftIndex - sectionList.length;
@@ -12435,7 +12433,7 @@ define('extensions/partialRendering',[
         sectionsToRemove = sectionList.slice(leftIndex, sectionList.length + rightIndex);
         sectionList = leftSections.concat(modifiedSections).concat(rightSections);
     }
-    
+
     var doFootnotes = false;
     var hasFootnotes = false;
     partialRendering.onSectionsCreated = function(sectionListParam) {
@@ -12483,7 +12481,7 @@ define('extensions/partialRendering',[
         var id = footnoteElt.id.substring(3);
         footnoteMap[id] = footnoteElt;
     }
-    
+
     var footnoteContainerElt;
     var previewContentsElt;
     function refreshSections() {
@@ -12493,7 +12491,7 @@ define('extensions/partialRendering',[
             var sectionElt = document.getElementById("wmd-preview-section-" + section.id);
             previewContentsElt.removeChild(sectionElt);
         });
-        
+
         var wmdPreviewElt = document.getElementById("wmd-preview");
         var childNode = wmdPreviewElt.firstChild;
         function createSectionElt(section) {
@@ -12580,7 +12578,7 @@ define('extensions/partialRendering',[
             }
         }
     };
-    
+
     partialRendering.onReady = function() {
         footnoteContainerElt = crel('div', {
             id: 'wmd-preview-section-footnotes',
@@ -12606,7 +12604,7 @@ define('extensions/umlDiagrams',[
 	// ', Diagram', // 如果加了这两个, 338 KB, 不加, 207KB
 	// 'flow-chart'
 ], function(require, _, utils, Extension, crel
-	// ,Diagram, 
+	// ,Diagram,
 	// flowChart
 	) {
 
@@ -12867,7 +12865,7 @@ define('extensions/toc',[
                     elt.innerHTML = htmlToc;
                 }
             });
-            // Add toc in the TOC button 
+            // Add toc in the TOC button
             _.each(tocEltList, function(elt) {
                 elt.innerHTML = htmlToc;
             });
@@ -13134,7 +13132,7 @@ define('extensions/scrollLink',[
         var editorScrollTop = window.lightMode ? $textareaElt.scrollTop() : aceEditor.renderer.getScrollTop();
         editorScrollTop < 0 && (editorScrollTop = 0);
         var previewScrollTop = $previewElt.scrollTop();
-        
+
         var destScrollTop;
         // Perform the animation if diff > 9px
         if(isScrollEditor === true) {
@@ -14140,10 +14138,10 @@ define('eventMgr',[
 
     // Operation on ACE
     addEventHook("onAceCreated");
-    
+
     // Refresh twitter buttons
     // addEventHook("onTweet");
-    
+
 
     var onPreviewFinished = createEventHook("onPreviewFinished");
     var onAsyncPreviewListenerList = getExtensionListenerList("onAsyncPreview");
@@ -14206,7 +14204,7 @@ define('eventMgr',[
             //     }) : "");
             // }, "").value();
             // document.querySelector('.accordion-extensions').innerHTML = accordionHtml;
-            
+
             // // Create extension buttons
             // logger.log("onCreateButton");
             // var onCreateButtonListenerList = getExtensionListenerList("onCreateButton");
@@ -14247,7 +14245,7 @@ define('eventMgr',[
                 right: -previewButtonsWidth + $btnGroupElt.width() + $btnGroupElt.position().left
             });
         });
-        
+
         // Call onReady listeners
         onReady();
     };
@@ -14518,7 +14516,7 @@ define('shortcutMgr',[
             shortcut.exec && aceEditor.commands.addCommand(_.pick(shortcut, 'name', 'bindKey', 'exec', 'readOnly', 'multiSelectAction'));
         });
     };
-    
+
     shortcutMgr.getPagedownKeyStrokes = function() {
         return _.chain(shortcuts).where({
             isPageDown: true
@@ -14621,7 +14619,7 @@ define('shortcutMgr',[
     // - run() actually starts the editor; should be called after all necessary plugins are registered. Calling this more than once is a no-op.
     // - refreshPreview() forces the preview to be updated. This method is only available after run() was called.
     Markdown.EditorLight = function (markdownConverter, idPostfix, options) {
-        
+
         options = options || {};
 
         if (typeof options.handler === "function") { //backwards compatible behavior
@@ -15211,7 +15209,7 @@ define('shortcutMgr',[
             //Not necessary
             //saveState();
         };
-        
+
         this.reinit = function(content, start, end, scrollTop) {
             undoStack = [];
             stackPtr = 0;
@@ -15580,9 +15578,9 @@ define('shortcutMgr',[
 
         var background = doc.createElement("div"),
             style = background.style;
-        
+
         background.className = "wmd-prompt-background";
-        
+
         style.position = "absolute";
         style.top = "0";
 
@@ -15874,7 +15872,7 @@ define('shortcutMgr',[
                 }
             });
         }
-       
+
         // life 新添加函数
         // life
         // isImage 2015/3/1
@@ -15905,7 +15903,7 @@ define('shortcutMgr',[
             var a = commandProto.insertLink(chunks, fixupInputArea, link, text, isImage);
             if(!a) fixupInputArea();
         }
-       
+
         // life
         MD.insertLink = insertLinkLife;
         MD.insertLink2 = insertLinkLife;
@@ -16801,7 +16799,7 @@ define('shortcutMgr',[
 
     };
 
-    // 要改成 ## ### #### 
+    // 要改成 ## ### ####
     // life 2015/7/12
     commandProto.doHeading = function (chunk, postProcessing) {
         // Remove leading/trailing whitespace and reduce internal spaces to single spaces.
@@ -16890,8 +16888,8 @@ define('core',[
     // 'ace/requirejs/text!ace/theme/textmate.css',
     // 'ace/ext/spellcheck',
     // 'ace/ext/searchbox'
-], function(_, crel, 
-    // ace, 
+], function(_, crel,
+    // ace,
     constants, utils, eventMgr, shortcutMgr) {
 
     var core = {};
@@ -17086,7 +17084,7 @@ define('core',[
         var column = 0;
         for (var row = 0; row < contentArr.length; ++row) {
             var line = contentArr[row];
-            
+
             if (offset <= line.length) {
                 column = offset;
                 break;
@@ -17173,7 +17171,7 @@ define('core',[
         if (!window.lightMode) {
             return;
         }
-        var scrollTop = $('#wmd-input').scrollTop(); // : 
+        var scrollTop = $('#wmd-input').scrollTop(); // :
         var pos = core._getTextareaCusorPosition();
         // console.log(pos);
         var content = MD.getContent();
@@ -17372,7 +17370,7 @@ define('core',[
         };
 
         eventMgr.onPagedownConfigure(editor);
-        
+
         if(window.lightMode) {
             editor.run(previewWrapper);
             editor.undoManager.reinit(initDocumentContent, fileDesc.editorStart, fileDesc.editorEnd, fileDesc.editorScrollTop);
@@ -17439,7 +17437,7 @@ define('core',[
             return $('#wmd-input').val();
             // return $editorElt.val(); // 有延迟?
         };
-        
+
 
         /*
         if (!window.lightMode) {
@@ -17553,7 +17551,7 @@ define('core',[
 
             $("#wmd-help-button").show();
             $mdKeyboardMode = $('#md-keyboard-mode');
-            
+
             // 编辑模式选择
             $('.wmd-mode a').click(function () {
                 var $this = $(this);
@@ -17566,9 +17564,9 @@ define('core',[
                 $('.wmd-mode a[data-mode="' + mode + '"]').find('i').addClass('fa-check');
             });
 
-            if (!window.LEA 
-                || (window.LEA 
-                    && window.LEA.canSetMDModeFromStorage 
+            if (!window.LEA
+                || (window.LEA
+                    && window.LEA.canSetMDModeFromStorage
                     && window.LEA.canSetMDModeFromStorage())) {
                 var aceMode = localS.get(localSModeKey);
                 if (!aceMode) {
@@ -17634,9 +17632,9 @@ define('core',[
         }
         // 初始时
         // 是否可以从storage中设置md mode
-        if (!window.LEA 
-            || (window.LEA 
-                && window.LEA.canSetMDModeFromStorage 
+        if (!window.LEA
+            || (window.LEA
+                && window.LEA.canSetMDModeFromStorage
                 && window.LEA.canSetMDModeFromStorage())) {
             var aceMode = localS.get(localSModeKey);
             if (!window.lightMode && aceMode) {
@@ -17670,7 +17668,7 @@ define('core',[
                 $(this).find(".modal-footer a:last").click();
             }
         });
-       
+
         // Click events on "insert link" and "insert image" dialog buttons
         actionInsertLinkO.click(function(e) {
             var value = utils.getInputTextValue($("#input-insert-link"), e);
@@ -17748,7 +17746,7 @@ requirejs.config({
         'ace/requirejs/text': 'public/libs/ace_text',
         'ace/commands/default_commands': 'public/libs/ace_commands',
         xregexp: 'bower-libs/xregexp/xregexp-all',
-       
+
         // 以下, 异步加载, 不常用
         Diagram: 'public/libs/uml/sequence-diagram.min',
         'diagram-grammar': 'public/libs/uml/diagram-grammar.min',
